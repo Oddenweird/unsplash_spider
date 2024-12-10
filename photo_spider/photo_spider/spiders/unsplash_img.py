@@ -26,21 +26,21 @@ class UnsplashImgSpider(CrawlSpider):
         relative_category_images = response.xpath('//a[@class="vGXaw uoMSP kXLw7 R6ToQ JVs7s R6ToQ"]/text()').getall()
         loader.add_value('category_images',relative_category_images)
        
-        # relative_images_urls = response.xpath('//div[@class="wdUrX"]/img[@class="I7OuT DVW3V L1BOa"]/@src').get()
-        # loader.add_value('images_urls', relative_images_urls)
+        relative_images_urls = response.xpath('//div[@class="wdUrX"]/img[@class="I7OuT DVW3V L1BOa"]/@src').get()
+        loader.add_value('images_urls', relative_images_urls)
 
         # relative_images_urls = response.xpath('//div[@class="wdUrX"]/img[@class="I7OuT DVW3V L1BOa"]/@src').get()
         # absolute_images_urls = [urljoin(response.url, img_url) for img_url in relative_images_urls]
         # loader.add_value('images_urls', absolute_images_urls)
 
-        relative_images_urls = response.xpath('//div[@class="wdUrX"]/img[@class="I7OuT DVW3V L1BOa"]/@src').get()
+        # relative_images_urls = response.xpath('//div[@class="wdUrX"]/img[@class="I7OuT DVW3V L1BOa"]/@src').get()
         # if not relative_images_urls:
         #     self.logger.warning("No image URLs found on the page: %s", response.url)
-        absolute_images_urls = [urljoin(response.url, url) for url in relative_images_urls]
-        if not absolute_images_urls:
-            self.logger.warning("No image URLs found on the page: %s", response.url)
+        # absolute_images_urls = [urljoin(response.url, url) for url in relative_images_urls]
+        # if not absolute_images_urls:
+        #     self.logger.warning("No image URLs found on the page: %s", response.url)
 
-        loader.add_value('images_urls', absolute_images_urls)
+        # loader.add_value('images_urls', absolute_images_urls)
                          
         
         yield loader.load_item()
